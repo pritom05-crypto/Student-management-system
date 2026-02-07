@@ -1,0 +1,73 @@
+.student-list {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.students-table thead {
+  background: #f5f5f5;
+  font-weight: 600;
+  color: #333;
+}
+
+.students-table th {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+
+.students-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.student-row:hover {
+  background: #f9f9f9;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.no-students {
+  background: white;
+  border-radius: 10px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #999;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .student-list {
+    padding: 1rem;
+  }
+
+  .students-table {
+    font-size: 0.85rem;
+  }
+
+  .students-table th,
+  .students-table td {
+    padding: 0.7rem;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
