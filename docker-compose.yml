@@ -23,20 +23,21 @@ services:
       retries: 5
       start_period: 40s
 
-  app:
-    build: .
-    container_name: student-management-app
-    environment:
-      MONGODB_URI: mongodb://admin:password@mongodb:27017/student-management
-      PORT:
-      - "5000:5000"
-      NODE_ENV: production
-    depends_on:
-      mongodb:
-        condition: service_healthy
-    networks:
-      - student-network
-    restart: unless-stopped
+app:
+  build: .
+  container_name: student-management-app
+  environment:
+    MONGODB_URI: mongodb://admin:password@mongodb:27017/student-management
+    PORT: 5000
+    NODE_ENV: production
+  ports:
+    - "5000:5000"
+  depends_on:
+    mongodb:
+      condition: service_healthy
+  networks:
+    - student-network
+  restart: unless-stopped
 
   frontend:
     build: ./frontend
