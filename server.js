@@ -1,4 +1,6 @@
 const express = require('express');
+const Registration = require("./models/Registration");
+const Course = require("./models/Course");
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -159,4 +161,76 @@ app.get('/health', (req, res) => {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+});
+
+// GET all courses
+app.get("/api/courses", async (req, res) => {
+  try {
+    const courses = await Course.find();
+    res.json(courses);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
+// ADD course
+app.post("/api/courses", async (req, res) => {
+  try {
+
+    const newCourse = new Course({
+      courseCode: req.body.courseCode,
+      courseName: req.body.courseName,
+      credit: req.body.credit,
+      department: req.body.department
+    });
+
+    const savedCourse = await newCourse.save();
+
+    res.json(savedCourse);
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// REGISTER COURSE
+app.post("/api/register-course", async (req, res) => {
+
+  try {
+
+    const registration = new Registration({
+      studentId: req.body.studentId,
+      courseId: req.body.courseId,
+      semester: req.body.semester
+    });
+
+    const saved = await registration.save();
+
+    res.json(saved);
+
+  } catch (err) {
+
+    res.status(500).json({ error: err.message });
+
+  }
+
+});
+
+app.get("/api/student-courses/:studentId", async (req, res) => {
+
+  try {
+
+    const courses = await Registration.find({
+      studentId: req.params.studentId
+    }).populate("courseId");
+
+    res.json(courses);
+
+  } catch (err) {
+
+    res.status(500).json({ error: err.message });
+
+  }
+
 });
