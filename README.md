@@ -133,9 +133,9 @@ Create or modify `.env` file:
 PORT=5000
 MONGODB_URI=mongodb://admin:password@mongodb:27017/student-management?authSource=admin
 NODE_ENV=production
-MONGO_INITDB_ROOT_USERNAME=admin
-MONGO_INITDB_ROOT_PASSWORD=password
-MONGO_INITDB_DATABASE=student-management
+MONGO_INITDB_ROOT_USERNAME=****
+MONGO_INITDB_ROOT_PASSWORD=****
+MONGO_INITDB_DATABASE=****
 ```
 
 ⚠️ **For production**: Change default passwords and use AWS Secrets Manager.
@@ -177,7 +177,7 @@ docker-compose up --build -d
 
 ### Connect to MongoDB
 ```bash
-docker exec -it student-management-mongodb mongosh -u admin -p password
+docker exec -it student-management-mongodb mongosh -u  -p 
 ```
 
 ## AWS EC2 Deployment
@@ -257,7 +257,7 @@ MONGODB_URI=mongodb+srv://username:password@your-cluster.mongodb.net/student-man
 ### Use AWS RDS MongoDB
 
 ```env
-MONGODB_URI=mongodb://admin:password@your-rds-endpoint:27017/student-management
+MONGODB_URI=mongodb://****:****@your-rds-endpoint:27017/student-management
 ```
 
 ### HTTPS with Let's Encrypt
@@ -359,7 +359,7 @@ docker-compose up --build
 
 4. **Backup MongoDB**
   ```bash
-  docker exec student-management-mongodb mongodump --username admin --password password --authenticationDatabase admin --out /backup
+  docker exec student-management-mongodb mongodump --username *** --password ****** --authenticationDatabase admin --out /backup
   ```
 
 5. **Use Auto-scaling Groups**
