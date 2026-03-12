@@ -62,9 +62,9 @@ nano .env
 PORT=5000
 MONGODB_URI=mongodb://admin:password@mongodb:27017/student-management?authSource=admin
 NODE_ENV=production
-MONGO_INITDB_ROOT_USERNAME=admin
-MONGO_INITDB_ROOT_PASSWORD=password
-MONGO_INITDB_DATABASE=student-management
+MONGO_INITDB_ROOT_USERNAME=***
+MONGO_INITDB_ROOT_PASSWORD=****
+MONGO_INITDB_DATABASE=*****
 ```
 
 ⚠️ **Change default passwords** for production!
